@@ -1,4 +1,6 @@
 import { App, Construct, Stack, StackProps } from '@aws-cdk/core';
+import { AlpsGraphQL } from 'cdk-alps-graph-ql';
+import { AlpsSpecRestApi } from 'cdk-alps-spec-rest-api';
 
 export class MyStack extends Stack {
   constructor(scope: Construct, id: string, props: StackProps = {}) {
@@ -9,14 +11,22 @@ export class MyStack extends Stack {
 }
 
 // for development, use account/region from cdk cli
-const devEnv = {
+const env = {
   account: process.env.CDK_DEFAULT_ACCOUNT,
   region: process.env.CDK_DEFAULT_REGION,
 };
 
 const app = new App();
 
-new MyStack(app, 'my-stack-dev', { env: devEnv });
-// new MyStack(app, 'my-stack-prod', { env: prodEnv });
+const stack = new MyStack(app, 'my-stack-dev', { env: env });
+
+new AlpsSpecRestApi(stack, 'AlpsSpecRestApi', {
+  alpsSpecFile: 'src/todo-alps.yaml',
+});
+
+new AlpsGraphQL(stack, 'AlpsGraphQL', {
+  name: 'demo',
+  alpsSpecFile: 'src/todo-alps.yaml',
+});
 
 app.synth();

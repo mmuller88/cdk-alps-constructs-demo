@@ -7,6 +7,10 @@ const project = new AwsCdkTypeScriptApp({
   defaultReleaseBranch: "main",
   cdkVersion: "1.75.0",
   repository: "https://github.com/mmuller88/cdk-alps-constructs-demo.git",
+  deps: [
+    'cdk-alps-spec-rest-api',
+    'cdk-alps-graph-ql',
+  ],
   keywords: [
     'cdk',
     'aws',
