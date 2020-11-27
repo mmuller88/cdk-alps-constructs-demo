@@ -7,6 +7,10 @@ const project = new AwsCdkTypeScriptApp({
   defaultReleaseBranch: "main",
   cdkVersion: "1.75.0",
   repository: "https://github.com/mmuller88/cdk-alps-constructs-demo.git",
+  cdkDependencies: [
+    '@aws-cdk/aws-dynamodb',
+    '@aws-cdk/aws-appsync',
+  ],
   deps: [
     'cdk-alps-spec-rest-api',
     'cdk-alps-graph-ql',
@@ -21,5 +25,9 @@ const project = new AwsCdkTypeScriptApp({
   ],
 
 });
+
+const common_exclude = ['cdk.out', 'cdk.context.json', 'images', 'yarn-error.log', 'tmp'];
+project.npmignore.exclude(...common_exclude);
+project.gitignore.exclude(...common_exclude);
 
 project.synth();

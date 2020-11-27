@@ -132,7 +132,7 @@
     constructs "^3.2.0"
     punycode "^2.1.1"
 
-"@aws-cdk/aws-dynamodb@1.75.0":
+"@aws-cdk/aws-dynamodb@1.75.0", "@aws-cdk/aws-dynamodb@^1.75.0":
   version "1.75.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-dynamodb/-/aws-dynamodb-1.75.0.tgz#b3ce0a3c587814e52ca1d234542e3cee8a49084f"
   integrity sha512-nUMh1A1jdNHgObuTFKCt9L09Aw0t2Lj5rYUmEgzTfCmQrtaTUqx3UvD1CudMKbr6VQ7cwNeDTZbOooGxQht6Kw==
@@ -1760,10 +1760,10 @@ caseless@~0.12.0:
   resolved "https://registry.yarnpkg.com/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
   integrity sha1-G2gcIf+EAzyCZUMJBolCDRhxUdw=
 
-cdk-alps-graph-ql@*:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/cdk-alps-graph-ql/-/cdk-alps-graph-ql-0.0.2.tgz#37a5f37b3841c4ea10cd45ed52b0b441a06151f2"
-  integrity sha512-4iCARo8ecTQNhlTfbKv+MprIsm7y45Glx8dIx2LHIWZDv4zjZKIzfM12AtSkfFSeRxcSvI9gJVZRBfrXpjPZeg==
+cdk-alps-graph-ql@0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/cdk-alps-graph-ql/-/cdk-alps-graph-ql-0.0.5.tgz#1ad93269cbc205be7b7a7d57efc0af42fc895d0d"
+  integrity sha512-IggkjeT9GhYVErITAYEltk+MRijIyUk+GB5vJNfCBa6LGmlTmu7pKZyH18Zx5ah23i4YpDLKfdyEHU8cHvoinw==
   dependencies:
     "@aws-cdk/aws-appsync" "^1.75.0"
     "@aws-cdk/aws-iam" "^1.75.0"
@@ -1995,9 +1995,9 @@ concat-stream@^2.0.0:
     typedarray "^0.0.6"
 
 constructs@^3.2.0:
-  version "3.2.45"
-  resolved "https://registry.yarnpkg.com/constructs/-/constructs-3.2.45.tgz#574c9d9f1c98c78778b36b1998dd0de928aa17d1"
-  integrity sha512-Bjxa+Kevf7Eu3uiWht2FGffvVhzZxx+QCxTTHmVJpcrnwyL6WaUmG5s9AdzsGZKlhnxIowKE+TeLhN/w2R98UA==
+  version "3.2.46"
+  resolved "https://registry.yarnpkg.com/constructs/-/constructs-3.2.46.tgz#94e50bc417f038fc1f570d0df1d789413ecf605d"
+  integrity sha512-5vVcE57eepNxyNo6xaYZ9vHxCzBQ9WX/gAUmKr4C9p+ya+9S+MXh6qxuT8RISiOb4681EY7TvWIqVT10tZb41w==
 
 contains-path@^0.1.0:
   version "0.1.0"
@@ -6573,14 +6573,9 @@ uglify-js@^3.1.4:
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.12.0.tgz#b943f129275c41d435eb54b643bbffee71dccf57"
   integrity sha512-8lBMSkFZuAK7gGF8LswsXmir8eX8d2AAMOnxSDWjKBx/fBR6MypQjs78m6ML9zQVp1/hD4TBdfeMZMC7nW1TAA==
 
-"unified@git+https://github.com/mamund/alps-unified.git":
-  version "0.0.0"
-  resolved "git+https://github.com/mamund/alps-unified.git#ae8cfa56b1a0d642a0eb3e1ed43d54cf99ca6e0e"
-
 "unified@https://github.com/mamund/alps-unified":
   version "0.0.0"
-  uid ae8cfa56b1a0d642a0eb3e1ed43d54cf99ca6e0e
-  resolved "https://github.com/mamund/alps-unified#ae8cfa56b1a0d642a0eb3e1ed43d54cf99ca6e0e"
+  resolved "https://github.com/mamund/alps-unified#f0ccdbab71e74e41719e34bdef4d5dbc18abf494"
 
 union-value@^1.0.0:
   version "1.0.1"
