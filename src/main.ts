@@ -1,7 +1,8 @@
 import { join } from 'path';
 import * as appsync from '@aws-cdk/aws-appsync';
 import * as db from '@aws-cdk/aws-dynamodb';
-import { App, Construct, Stack, StackProps } from '@aws-cdk/core';
+import * as lambda from '@aws-cdk/aws-lambda';
+import { App, Construct, Stack, StackProps, RemovalPolicy } from '@aws-cdk/core';
 import { AlpsGraphQL } from 'cdk-alps-graph-ql';
 import { AlpsSpecRestApi } from 'cdk-alps-spec-rest-api';
 
@@ -22,6 +23,7 @@ const app = new App();
 const stack = new MyStack(app, 'my-stack-dev', { env: env });
 
 const todoTable = new db.Table(stack, 'TodoTable', {
+  removalPolicy: RemovalPolicy.DESTROY,
   partitionKey: {
     name: 'id',
     type: db.AttributeType.STRING,
@@ -32,6 +34,43 @@ const todoTable = new db.Table(stack, 'TodoTable', {
 new AlpsSpecRestApi(stack, 'AlpsSpecRestApi', {
   alpsSpecFile: 'src/todo-alps.yaml',
 });
+
+const getAllLambda = new lambda.Function(stack, 'getAllLambda', {
+  functionName: 'todoList',
+  code: new lambda.AssetCode('lib/lambdas'),
+  handler: 'get-all.handler',
+  runtime: lambda.Runtime.NODEJS_12_X,
+  environment: {
+    TABLE_NAME: todoTable.tableName,
+    PRIMARY_KEY: 'id',
+  },
+});
+
+const createOne = new lambda.Function(stack, 'createOne', {
+  functionName: 'todoAdd',
+  code: new lambda.AssetCode('lib/lambdas'),
+  handler: 'create.handler',
+  runtime: lambda.Runtime.NODEJS_12_X,
+  environment: {
+    TABLE_NAME: todoTable.tableName,
+    PRIMARY_KEY: 'id',
+  },
+});
+
+const deleteOne = new lambda.Function(stack, 'deleteOne', {
+  functionName: 'todoRemove',
+  code: new lambda.AssetCode('lib/lambdas'),
+  handler: 'delete-one.handler',
+  runtime: lambda.Runtime.NODEJS_12_X,
+  environment: {
+    TABLE_NAME: todoTable.tableName,
+    PRIMARY_KEY: 'id',
+  },
+});
+
+todoTable.grantReadWriteData(getAllLambda);
+todoTable.grantReadWriteData(createOne);
+todoTable.grantReadWriteData(deleteOne);
 //////////////////
 
 ///////// ALPS Graph QL
@@ -41,7 +80,7 @@ const graphQlApi = new AlpsGraphQL(stack, 'AlpsGraphQL', {
   tmpFile: join(__dirname, '../tmp/schema.graphql'),
 });
 
-const todoDS = graphQlApi.addDynamoDbDataSource('demoDataSource', todoTable);
+const todoDS = graphQlApi.addDynamoDbDataSource('todoDataSource', todoTable);
 
 todoDS.createResolver({
   typeName: 'Query',
@@ -53,7 +92,7 @@ todoDS.createResolver({
 todoDS.createResolver({
   typeName: 'Mutation',
   fieldName: 'todoAdd',
-  requestMappingTemplate: appsync.MappingTemplate.dynamoDbPutItem(appsync.PrimaryKey.partition('id').auto(), appsync.Values.projecting('todoItem')),
+  requestMappingTemplate: appsync.MappingTemplate.dynamoDbPutItem(appsync.PrimaryKey.partition('id').auto(), appsync.Values.attribute('body').is('$ctx.args.todoItem')),
   responseMappingTemplate: appsync.MappingTemplate.dynamoDbResultItem(),
 });
 

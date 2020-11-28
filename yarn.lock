@@ -220,7 +220,7 @@
     "@aws-cdk/core" "1.75.0"
     constructs "^3.2.0"
 
-"@aws-cdk/aws-lambda@1.75.0":
+"@aws-cdk/aws-lambda@1.75.0", "@aws-cdk/aws-lambda@^1.75.0":
   version "1.75.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-lambda/-/aws-lambda-1.75.0.tgz#53a9ec814983efa2cf9426bdc00416f2f5d8deb9"
   integrity sha512-tvdUZT5f+jJvBHLUvP5u9Vm79pcN6d+5w83h2vFC3WJ7A0hMfglbOFpwwPbpBvq6cn6ZqmlkRjSc5XQKmDVJqw==
@@ -1069,6 +1069,11 @@
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@types/stack-utils/-/stack-utils-2.0.0.tgz#7036640b4e21cc2f259ae826ce843d277dad8cff"
   integrity sha512-RJJrrySY7A8havqpGObOB4W92QXKJo63/jFLLgpvOtsGUqbQZ9Sbgl35KMm1DjC6j7AvmmU2bIno+3IyEaemaw==
+
+"@types/uuid@^8.3.0":
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/@types/uuid/-/uuid-8.3.0.tgz#215c231dff736d5ba92410e6d602050cce7e273f"
+  integrity sha512-eQ9qFW/fhfGJF8WKHGEHZEyVWfZxrT+6CLIJGBcZPfxUh/+BnEj+UCGYMlr9qZuX/2AltsvwrGqp0LhEW8D0zQ==
 
 "@types/yargs-parser@*":
   version "15.0.0"
@@ -1995,9 +2000,9 @@ concat-stream@^2.0.0:
     typedarray "^0.0.6"
 
 constructs@^3.2.0:
-  version "3.2.46"
-  resolved "https://registry.yarnpkg.com/constructs/-/constructs-3.2.46.tgz#94e50bc417f038fc1f570d0df1d789413ecf605d"
-  integrity sha512-5vVcE57eepNxyNo6xaYZ9vHxCzBQ9WX/gAUmKr4C9p+ya+9S+MXh6qxuT8RISiOb4681EY7TvWIqVT10tZb41w==
+  version "3.2.47"
+  resolved "https://registry.yarnpkg.com/constructs/-/constructs-3.2.47.tgz#c7c71c4a7e787c0130c3a32ac24e03a7c4b6c4ca"
+  integrity sha512-xUJFBg8Y/KZD3mRsDw7osz60loCN9X9UPLiZFhHItdw3LXWul3tlEjozhM0obVVNAkMnoEMf8Zo73v7IjBnzUw==
 
 contains-path@^0.1.0:
   version "0.1.0"
@@ -5302,10 +5307,10 @@ progress@^2.0.0:
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
-projen@^0.5.3:
-  version "0.5.3"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.5.3.tgz#ac8275b794af26c663161b08027f8a0084ff3c99"
-  integrity sha512-elzRhPKRWYN8XVhvrjCUF5YBIe00DRY+uWxoSqiTvs/btw9wT16IM6hRMEmIYPEbtc/GnW3S453P1K7D5lkTKQ==
+projen@^0.5.4:
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.5.4.tgz#a8d3a02d693fa407f9d3ea54d628c71fe19633ff"
+  integrity sha512-00cRE+2uhFoqQpLPdEfOGukrxfuAlwZCfwe7LCKwTkRq3TkjIHlLOTjLKbAS8XhfZF1YBFaupBEMtz3zmD1tBw==
   dependencies:
     "@iarna/toml" "^2.2.5"
     chalk "^4.1.0"
